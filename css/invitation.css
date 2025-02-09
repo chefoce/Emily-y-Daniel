@@ -1,0 +1,215 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+
+.background-img {
+  margin: 0;
+  padding: 0;
+  background-image: url("../images/background.jpg"); /* Update this path to your actual image */
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  transition: background-image 1s ease-out;
+  height: 100vh;
+}
+
+.invitation-instructions {
+  padding-top: 4em; /* Reducido de 8em */
+  text-align: center;
+  color: #333;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.invitation-instructions h3 {
+  margin: 0;
+  font-family: "Pacifico", cursive;
+  font-size: calc(2em + 1vw);
+  margin-bottom: 15px;
+  font-weight: 100;
+  color: #0b2f47;
+  text-shadow: 2px 2px 2px rgb(231, 231, 231);
+  text-transform: capitalize;
+}
+
+.invitation-instructions p {
+  font-size: calc(1em + 0.5vw); /* Tamaño responsivo */
+  line-height: 1.5;
+  font-family: "Times New Roman", Times, serif;
+  font-style: oblique;
+  font-weight: 500;
+}
+
+.center,
+.envelope-wrapper .letter,
+.container-index {
+  place-items: center;
+}
+
+.envelope-wrapper {
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  background-color: #114364;
+  box-shadow: 0 0 10px #999;
+  margin-top: 5em;
+  border-radius: 20px;
+}
+.envelope-wrapper .envelope {
+  width: 800px;
+  height: 550px;
+  position: relative;
+  border-top: calc(500px / 2) solid transparent;
+  border-bottom: calc(500px / 2) solid #0d4164;
+  border-right: calc(800px / 2) solid #0f3c5a;
+  border-left: calc(800px / 2) solid #0f3c5a;
+  z-index: 2;
+  border-radius: 20px;
+}
+.envelope-wrapper .opened-envelope {
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-top: calc(800px / 2.3) solid #114364;
+  border-bottom: none;
+  border-right: calc(800px / 2) solid transparent;
+  border-left: calc(800px / 2) solid transparent;
+  z-index: 3;
+  border-radius: 20px;
+}
+.envelope-wrapper .letter {
+  position: absolute;
+  margin: 10px;
+  width: calc(800px - 20px);
+  height: calc(500px - 20px);
+  color: #3a3a3a;
+  font-size: 22px;
+  font-style: italic;
+  z-index: 1;
+  background-color: #fff;
+  box-shadow: 0 0 20px #9999998f;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 500px;
+  border-radius: 20px;
+}
+
+.letter h1,
+.letter p {
+  font-family: "Pacifico", cursive; /* Aplica la fuente Pacifico */
+  margin: 0; /* Elimina los márgenes predeterminados */
+}
+
+.letter h1 {
+  font-size: 3.5em; /* Ajusta el tamaño según tus preferencias */
+  margin-bottom: 25px;
+}
+
+.letter p {
+  font-size: 1.3em; /* Ajusta el tamaño según tus preferencias */
+  font-family: "Times New Roman", Times, serif;
+  font-style: oblique;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.fade-transition {
+  transition: opacity 1s ease-out;
+}
+
+#index-content,
+#invitation-content {
+  transition: opacity 1s ease-in-out;
+}
+
+#invitation-content {
+  visibility: hidden;
+  opacity: 0;
+}
+
+@media screen and (max-width: 699px) {
+  .background-img {
+    background-position: center; /* Mejor posicionamiento en móviles */
+  }
+
+  .invitation-instructions {
+    padding-top: 2em;
+  }
+  .envelope-wrapper {
+    margin-top: 2em;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .envelope-wrapper .envelope {
+    width: 100%;
+    max-width: 350px;
+    height: 220px;
+    margin: 0 auto;
+    border-top: calc(220px / 2) solid transparent;
+    border-bottom: calc(220px / 2) solid #dfdab9;
+    border-right: calc(325px / 2) solid #eae6ca;
+    border-left: calc(325px / 2) solid #eae6ca;
+  }
+  .envelope-wrapper .opened-envelope {
+    border-top: calc(325px / 2.5) solid #f5f5dc;
+    border-right: calc(325px / 2) solid transparent;
+    border-left: calc(325px / 2) solid transparent;
+  }
+  .envelope-wrapper .letter {
+    width: calc(100% - 20px);
+    height: auto;
+    min-height: 180px;
+    padding: 15px;
+  }
+  .invitation-instructions h3 {
+    font-size: 2em;
+    margin-bottom: 15px;
+    margin-top: 2em;
+    line-height: 1.5;
+  }
+
+  .invitation-instructions p {
+    font-size: 1.3em;
+    line-height: 1.5;
+  }
+  .letter h1 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+  }
+
+  .letter p {
+    font-size: 1em;
+    line-height: 1.4;
+  }
+}
+/* Ajustes para pantallas muy pequeñas */
+@media screen and (max-width: 320px) {
+  .invitation-instructions h3 {
+    font-size: 1.5em;
+  }
+
+  .invitation-instructions p {
+    font-size: 0.9em;
+  }
+
+  .letter h1 {
+    font-size: 1.5em;
+  }
+
+  .letter p {
+    font-size: 0.9em;
+  }
+}
+
+/* Asegurar que el contenedor principal sea responsivo */
+.container-index {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 15px;
+  box-sizing: border-box;
+}
