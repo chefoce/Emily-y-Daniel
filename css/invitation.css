@@ -5,11 +5,24 @@
   padding: 0;
   background-image: url("../images/background.jpg"); /* Update this path to your actual image */
   background-size: cover;
-  background-position: bottom;
+  background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: scroll;
   transition: background-image 1s ease-out;
+  min-height: -webkit-fill-available; /* Soluciona el corte en iOS */
   height: 100vh;
+  width: 100vw;
+}
+/* Asegurar que el contenedor principal sea responsivo */
+.container-index {
+  display: grid;
+  align-content: center;
+  place-items: center;
+  height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 15px;
+  box-sizing: border-box;
 }
 
 .invitation-instructions {
@@ -46,22 +59,25 @@
 }
 
 .envelope-wrapper {
+  width: 90%;
+  max-width: 800px;
+  margin: 3vh auto;
+  aspect-ratio: 16/11;
   position: relative;
   cursor: pointer;
   outline: none;
-  background-color: #114364;
+  background-color: #f5f5dc;
   box-shadow: 0 0 10px #999;
-  margin-top: 5em;
   border-radius: 20px;
 }
 .envelope-wrapper .envelope {
-  width: 800px;
-  height: 550px;
+  width: 100%;
+  height: 0;
   position: relative;
-  border-top: calc(500px / 2) solid transparent;
-  border-bottom: calc(500px / 2) solid #0d4164;
-  border-right: calc(800px / 2) solid #0f3c5a;
-  border-left: calc(800px / 2) solid #0f3c5a;
+  border-top: calc(600px / 2) solid transparent;
+  border-bottom: calc(600px / 2) solid #dfdab9;
+  border-right: calc(800px / 2) solid #eae6ca;
+  border-left: calc(800px / 2) solid #eae6ca;
   z-index: 2;
   border-radius: 20px;
 }
@@ -69,7 +85,7 @@
   width: 0;
   height: 0;
   position: absolute;
-  border-top: calc(800px / 2.3) solid #114364;
+  border-top: calc(800px / 2.3) solid #f5f5dc;
   border-bottom: none;
   border-right: calc(800px / 2) solid transparent;
   border-left: calc(800px / 2) solid transparent;
@@ -80,9 +96,9 @@
   position: absolute;
   margin: 10px;
   width: calc(800px - 20px);
-  height: calc(500px - 20px);
+  height: calc(600px - 20px);
   color: #3a3a3a;
-  font-size: 22px;
+  font-size: clamp(16px, 2vw, 22px);
   font-style: italic;
   z-index: 1;
   background-color: #fff;
@@ -92,7 +108,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 500px;
+  min-height: 480px;
   border-radius: 20px;
 }
 
@@ -138,35 +154,33 @@
     padding-top: 2em;
   }
   .envelope-wrapper {
-    margin-top: 2em;
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
+    margin-bottom: 4em;
+    max-width: 280px;
   }
 
   .envelope-wrapper .envelope {
     width: 100%;
-    max-width: 350px;
-    height: 220px;
+    max-width: 300px;
+    height: 200px;
     margin: 0 auto;
-    border-top: calc(220px / 2) solid transparent;
-    border-bottom: calc(220px / 2) solid #dfdab9;
-    border-right: calc(325px / 2) solid #eae6ca;
-    border-left: calc(325px / 2) solid #eae6ca;
+    border-top: calc(200px / 2) solid transparent;
+    border-bottom: calc(200px / 2) solid #dfdab9;
+    border-right: calc(300px / 2) solid #eae6ca;
+    border-left: calc(300px / 2) solid #eae6ca;
   }
   .envelope-wrapper .opened-envelope {
-    border-top: calc(325px / 2.5) solid #f5f5dc;
-    border-right: calc(325px / 2) solid transparent;
-    border-left: calc(325px / 2) solid transparent;
+    border-top: calc(300px / 2.5) solid #f5f5dc;
+    border-right: calc(300px / 2) solid transparent;
+    border-left: calc(300px / 2) solid transparent;
   }
   .envelope-wrapper .letter {
-    width: calc(100% - 20px);
-    height: auto;
+    width: calc(300px - 20px);
+    height: calc(200px - 20px);
     min-height: 180px;
     padding: 15px;
   }
   .invitation-instructions h3 {
-    font-size: 2em;
+    font-size: clamp(2.5rem, 4vw, 3rem);
     margin-bottom: 15px;
     margin-top: 2em;
     line-height: 1.5;
@@ -176,14 +190,33 @@
     font-size: 1.3em;
     line-height: 1.5;
   }
+
   .letter h1 {
-    font-size: 1.8em;
+    font-size: clamp(2rem, 6vw, 3.5rem);
     margin-bottom: 10px;
   }
 
   .letter p {
-    font-size: 1em;
+    font-size: 0.8em;
     line-height: 1.4;
+  }
+}
+@media (min-width: 700px) and (max-width: 1024px) {
+  .background-img {
+    background-position: center top;
+  }
+
+  .envelope-wrapper {
+    max-width: 600px;
+    margin-top: 8vh;
+  }
+
+  .letter p {
+    font-size: 1.1rem;
+  }
+
+  .invitation-instructions {
+    padding-top: 6vh;
   }
 }
 /* Ajustes para pantallas muy pequeñas */
@@ -204,12 +237,55 @@
     font-size: 0.9em;
   }
 }
+/* Añadir este nuevo media query específico para iPad */
+@media (min-width: 760px) and (max-width: 1024px) and (orientation: portrait) {
+  .envelope-wrapper .opened-envelope {
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-top: calc(600px / 1.8) solid #f5f5dc;
+    border-bottom: none;
+    border-right: calc(600px / 2) solid transparent;
+    border-left: calc(600px / 2) solid transparent;
+    z-index: 3;
+    border-radius: 20px;
+  }
+  .envelope-wrapper .envelope {
+    width: 100%;
+    height: 0;
+    position: relative;
+    border-top: calc(600px / 2) solid transparent;
+    border-bottom: calc(300px / 2) solid #dfdab9;
+    border-right: calc(600px / 2) solid #eae6ca;
+    border-left: calc(600px / 2) solid #eae6ca;
+    z-index: 2;
+    border-radius: 20px;
+  }
+  .invitation-instructions {
+    padding-top: 20vh;
+  }
+  .envelope-wrapper {
+    max-width: 600px;
+    margin-top: 0;
+    margin-bottom: 20vh;
+  }
+  .envelope-wrapper .letter {
+    width: calc(600px - 20px);
+    height: calc(460px - 20px);
+    min-height: 440px;
+  }
+  .letter h1 {
+    font-size: 2.5em;
+  }
 
-/* Asegurar que el contenedor principal sea responsivo */
-.container-index {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 15px;
-  box-sizing: border-box;
+  .letter p {
+    font-size: 1.8em;
+  }
+  .invitation-instructions h3 {
+    font-size: 2.5em;
+  }
+
+  .invitation-instructions p {
+    font-size: 2em;
+  }
 }

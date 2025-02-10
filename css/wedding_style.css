@@ -5526,7 +5526,8 @@ img.wed_fullwidth {
 		position: absolute;
 		width: 302px;
 		height:302px;
-		border: 15px solid rgba(54, 87, 66,0.6);
+		border: 15px solid #486f99;
+		opacity: .6;
 		border-radius: 50%;
 	}
 	.wed_white .wed_img_1:before, 
@@ -5799,9 +5800,9 @@ img.wed_fullwidth {
   text-align: center;
   padding: 15px;
   border-radius: 8px;
-  background-color: #0B2F47;
+  background-color: #a6bddc;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  opacity: 0.9;
+  
 }
 
 .godparent-group h3 {
